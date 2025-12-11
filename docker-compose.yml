@@ -1,17 +1,24 @@
-version: "3.8"
-
-services:
+services: 
   postgres:
     image: postgres:16
     container_name: exness-postgres
-    ports:
+    ports: 
       - "5436:5432"
     environment:
       POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: exness_db
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: exness:db
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:latest
+    container_name: exness-redis
+    ports:
+      - "6380:6379"
+    volumes: 
+      - redis_data:/data
+
 volumes:
   postgres_data:
+  redis_data:

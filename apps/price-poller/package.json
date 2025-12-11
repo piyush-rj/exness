@@ -1,6 +1,7 @@
 {
-  "name": "market-feed",
+  "name": "price-poller",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx esbuild ./src/index.ts --bundle --platform=node --outdir=dist --format=cjs --loader:.ts=ts --sourcemap --external:@prisma/client --external:bull --external:ioredis --external:ws ",
@@ -10,13 +11,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "commonjs",
   "dependencies": {
-    "@types/bull": "^4.10.4",
     "@types/ws": "^8.18.1",
-    "bull": "^4.16.5",
-    "dotenv": "^17.2.1",
-    "ioredis": "^5.7.0",
-    "ws": "^8.18.3"
+    "bullmq": "^5.65.1",
+    "dotenv": "^17.2.3",
+    "ioredis": "^5.8.2",
+    "ws": "^8.18.3",
+    "zod": "^4.1.13"
   }
 }

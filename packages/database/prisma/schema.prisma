@@ -18,6 +18,7 @@ model User {
   name  String
   email String  @unique
   image String?
+  provider String
 
   Balance Balance?
   Orders  Orders[]
@@ -52,15 +53,15 @@ model Orders {
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  type     OrderType
-  asset    String
-  price    Decimal   @db.Decimal(18, 8)
-  margin   Decimal   @db.Decimal(18, 8)
-  quantity Decimal   @db.Decimal(18, 8)
+  type      OrderType
+  asset     String
+  price     Decimal     @db.Decimal(18, 8)
+  margin    Decimal     @db.Decimal(18, 8)
+  quantity  Decimal     @db.Decimal(18, 8)
   leverage  Int
   decimals  Int
   status    OrderStatus
-  createdAt DateTime  @default(now())
+  createdAt DateTime    @default(now())
 }
 
 enum OrderType {
