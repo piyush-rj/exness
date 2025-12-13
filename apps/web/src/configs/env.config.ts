@@ -7,7 +7,8 @@ dotenv.config({
 });
 
 const env_schmae = z.object({
-    NEXT_PUBLIC_BACKEND_URL: z.url()
+    NEXT_PUBLIC_BACKEND_URL: z.url(),
+    NEXTAUTH_URL: z.string().transform(val => val.trim()),
 });
 
 function parseEnv() {

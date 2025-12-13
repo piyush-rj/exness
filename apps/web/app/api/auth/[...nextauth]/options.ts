@@ -30,13 +30,15 @@ export const authOptions: AuthOptions = {
                         account,
                     });
 
-                    const result = response.data;
-                    if (result?.success) {
-                        user.id = result.user.id;
-                        user.name = result.user.name;
-                        user.email = result.user.email;
-                        user.image = result.user.image;
-                        user.provider = result.user.provider;
+                    const result = response.data.data;
+                    console.log('response succeded? ', response.data.success)
+
+                    if (response.data?.success) {
+                        user.id = result.id;
+                        user.name = result.name;
+                        user.email = result.email;
+                        user.image = result.image;
+                        user.provider = result.provider;
 
                         if (result.token) {
                             user.token = result.token;

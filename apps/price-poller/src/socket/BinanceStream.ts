@@ -33,7 +33,6 @@ export default class BinanceStream {
 
         this.ws.onmessage = ({ data }) => {
             try {
-
                 const parsed = JSON.parse(data);
                 const payload = parsed.data ?? parsed;
 
@@ -57,6 +56,8 @@ export default class BinanceStream {
             }
         };
     }
+
+    // add: cacluate spread method
 
     private process_db(event: TradeEvent) {
         try {
