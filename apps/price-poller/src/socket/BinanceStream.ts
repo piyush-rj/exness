@@ -1,7 +1,7 @@
 import Redis from "ioredis";
 import { env } from "../configs/env.config";
 import { TradeEvent, QueueData } from "../types/trade.types";
-import DatabaseQueue from "../queue/database_queue";
+import DatabaseQueue from "../queue/DatabaseQueue";
 
 const url =
     `${env.MARKET_FEED_WS_URL}/stream?streams=` +
@@ -57,8 +57,6 @@ export default class BinanceStream {
         };
     }
 
-    // add: cacluate spread method
-
     private process_db(event: TradeEvent) {
         try {
             const job: QueueData = {
@@ -81,5 +79,19 @@ export default class BinanceStream {
 
     private get_redis_publisher_key() {
         return "binance:trade:data";
+    }
+
+    private get_spread(price: string) {
+        const numeric_price = parseFloat(price);
+        const spread = 1 / 100;
+
+        const bid_price = numeric_price * (1 - spread);
+        const ask_price = numeric_price * (1 + spread);
+        const decimalPlaces = (price.split('.')[1] || '').length;
+
+        return {
+            bid: bid_price.toFixed(decimalPlaces),
+            ask: ask_price.toFixed(decimalPlaces)
+        };
     }
 }
