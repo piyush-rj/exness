@@ -12,8 +12,10 @@ export class RedisSubscriber {
 
     private get_live_proces(){
         this.subscriber.subscribe('binance:trade:data');
-        this.subscriber.on('message', () => {
-            this.prices_map.set
-        })
+        // this.subscriber.on('message', (data) => {
+        //     const parsed = 
+            
+        //     this.prices_map.set('binance:trade:data', data)
+        // })
     }
 }

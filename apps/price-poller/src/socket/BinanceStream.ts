@@ -1,7 +1,8 @@
 import Redis from "ioredis";
 import { env } from "../configs/env.config";
-import { TradeEvent, QueueData } from "../types/trade.types";
+import { QueueData, UpdatedTradeData } from "../types/trade.types";
 import DatabaseQueue from "../queue/DatabaseQueue";
+import { TradeEvent } from "@exness/types";
 
 const url =
     `${env.MARKET_FEED_WS_URL}/stream?streams=` +
@@ -17,6 +18,7 @@ export default class BinanceStream {
     private ws: WebSocket | null = null;
     private publisher: Redis;
     private db_queue: DatabaseQueue;
+    private readonly CHANNEL: string = "binance:trade:data";
 
     constructor() {
         this.publisher = new Redis(env.REDIS_URL);
@@ -73,12 +75,15 @@ export default class BinanceStream {
     }
 
     private async publish_event_to_redis(event: TradeEvent) {
-        const key = this.get_redis_publisher_key();
-        await this.publisher.publish(key, JSON.stringify(event));
-    }
+        const spread_data = this.get_spread(event.price);
 
-    private get_redis_publisher_key() {
-        return "binance:trade:data";
+        const updated_data: UpdatedTradeData = {
+            ...event,
+            ask: spread_data.ask,
+            bid: spread_data.bid,
+        }
+
+        await this.publisher.publish(this.CHANNEL, JSON.stringify(updated_data));
     }
 
     private get_spread(price: string) {
