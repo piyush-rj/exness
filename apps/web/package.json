@@ -9,12 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@types/ws": "^8.18.1",
     "axios": "^1.13.2",
     "dotenv": "^17.2.3",
     "next": "15.5.4",
     "next-auth": "^4.24.13",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "ws": "^8.18.3",
     "zod": "^4.1.13",
     "zustand": "^5.0.9"
   },

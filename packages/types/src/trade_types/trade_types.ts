@@ -9,3 +9,8 @@ export interface TradeEvent {
     last_trade_id: number;
     is_buyer_maker: boolean;
 }
+
+export interface UpdatedTradeData extends TradeEvent {
+  ask: string;
+  bid: string;
+}

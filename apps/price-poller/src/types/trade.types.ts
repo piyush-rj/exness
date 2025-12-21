@@ -14,7 +14,3 @@ export interface TradeData {
   tradeTime: Date;
 }
 
-export interface UpdatedTradeData extends TradeEvent {
-  ask: string;
-  bid: string;
-}

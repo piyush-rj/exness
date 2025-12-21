@@ -1,8 +1,8 @@
 import Redis from "ioredis";
 import { env } from "../configs/env.config";
-import { QueueData, UpdatedTradeData } from "../types/trade.types";
+import { QueueData } from "../types/trade.types";
 import DatabaseQueue from "../queue/DatabaseQueue";
-import { TradeEvent } from "@exness/types";
+import { TradeEvent, UpdatedTradeData } from "@exness/types";
 
 const url =
     `${env.MARKET_FEED_WS_URL}/stream?streams=` +

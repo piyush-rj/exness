@@ -2,7 +2,7 @@ import Redis from "ioredis";
 import { WebSocket, WebSocketServer } from "ws";
 import { env } from "../configs/env.config";
 import { v4 as uuid } from 'uuid';
-import { TradeEvent } from "@exness/types";
+import { TradeEvent, UpdatedTradeData } from "@exness/types";
 
 interface CustomWS extends WebSocket {
     id: string;
@@ -27,7 +27,8 @@ export class WebSocketRelayer {
     private init_redis() {
         this.subscriber?.subscribe(this.CHANNEL);
         this.subscriber?.on('message', (_, message) => {
-            const data: TradeEvent = JSON.parse(message);
+            const data: UpdatedTradeData = JSON.parse(message);
+            console.log('data from price poller is: ', {data});
 
             this.sockets.forEach((socket) => {
                 if (socket.readyState === WebSocket.OPEN) {

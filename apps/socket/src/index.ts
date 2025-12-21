@@ -1,3 +1,3 @@
-import { WebSocketRelayer } from "./socket/WebSocketServer";
+import { WebSocketRelayer } from "./socket/socket.relayer";
 
 new WebSocketRelayer();
