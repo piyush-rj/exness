@@ -2060,6 +2060,11 @@ exsolve@^1.0.7:
   resolved "https://registry.npmjs.org/exsolve/-/exsolve-1.0.7.tgz"
   integrity sha512-VO5fQUzZtI6C+vx4w/4BWJpg3s/5l+6pRQEHzFRM8WFi4XffSP1Z+4qi7GbjWbvRQEbdIco5mIMq+zX4rPuLrw==
 
+fancy-canvas@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fancy-canvas/-/fancy-canvas-2.1.0.tgz#44b40e40419ad8ef8304df365e4276767e918552"
+  integrity sha512-nifxXJ95JNLFR2NgRV4/MxVP45G9909wJTEKz5fg/TZS20JJZA6hfgRVh/bC9bwl2zBtBNcYPjiBE4njQHVBwQ==
+
 fast-check@^3.23.1:
   version "3.23.2"
   resolved "https://registry.npmjs.org/fast-check/-/fast-check-3.23.2.tgz"
@@ -2843,6 +2848,13 @@ lightningcss@1.30.1:
     lightningcss-linux-x64-musl "1.30.1"
     lightningcss-win32-arm64-msvc "1.30.1"
     lightningcss-win32-x64-msvc "1.30.1"
+
+lightweight-charts@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/lightweight-charts/-/lightweight-charts-5.1.0.tgz#250de702ef4ec608e7e961e5eb07519febd5b89e"
+  integrity sha512-jEAYR4ODYeyNZcWUigsoLTl52rbPmgXnvd5FLIv/ZoA/2sSDw63YKnef8n4yhzum7W926yHeFwlm7ididKb7YQ==
+  dependencies:
+    fancy-canvas "2.1.0"
 
 locate-path@^6.0.0:
   version "6.0.0"
@@ -4274,5 +4286,5 @@ zod@^4.1.13:
 
 zustand@^5.0.9:
   version "5.0.9"
-  resolved "https://registry.npmjs.org/zustand/-/zustand-5.0.9.tgz"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-5.0.9.tgz#389dcd0309b9c545d7a461bd3c54955962847654"
   integrity sha512-ALBtUj0AfjJt3uNRQoL1tL2tMvj6Gp/6e39dnfT6uzpelGru8v1tPOGBzayOWbPJvujM8JojDk3E1LxeFisBNg==
